@@ -75,7 +75,7 @@ class Register extends PanelModel {
                             $userTable=new userTable($this->db);
 
                             //if ($userTable->addRecord($this->postArray, $this->user->getUserCollegeID())){
-                            if ($userTable->addRecord($this->postArray, FALSE)){
+                            if ($userTable->addRecord($this->postArray, TRUE)){
                                 $this->panelContent_2='New user added';
                             }
                             else {

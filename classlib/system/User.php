@@ -144,7 +144,7 @@ class User {
                                 
                 //then set the session array property values
                 $this->session->setUserID($row['email']);               
-                $this->session->setUserCollegeID($row['CollegeID']);                
+                //$this->session->setUserCollegeID($row['ID']);                
                 $this->session->setUserFirstName($row['FirstName']);
                 $this->session->setUserLastName($row['LastName']);
                 $this->session->setUserType($row['userType']); 
@@ -152,7 +152,7 @@ class User {
 
                 //update the User class properties
                 $this->userID=$row['email'];
-                $this->userCollegeID=$row['CollegeID'];
+                //$this->userCollegeID=$row['ID'];
                 $this->userFirstName=$row['FirstName'];
                 $this->userLastName=$row['LastName'];
                 $this->userType=$row['userType'];
