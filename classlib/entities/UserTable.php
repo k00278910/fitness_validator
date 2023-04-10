@@ -199,7 +199,7 @@ class UserTable extends TableEntity {
         $email=strtolower($email); //force all emails to lower case
         $mobile=addslashes($mobile);
         $password=addslashes($pass1);
-       
+        $userType=$userType;  
         
         //check is password encryption is required
         if($encryptPW){//encrypt the password
@@ -208,7 +208,7 @@ class UserTable extends TableEntity {
         
         //construct the INSERT SQL
         //$sql="INSERT INTO user (ID,FirstName,LastName,PassWord,email,mobile,userType) VALUES ('$ID','$firstName','$lastName','$password','$email','$mobile','$userType')";   
-$sql="INSERT INTO user (ID,FirstName,LastName,PassWord,email,mobile) VALUES ('$ID','$firstName','$lastName','$password','$email','$mobile')";
+        $sql="INSERT INTO user (ID,FirstName,LastName,PassWord,email,mobile,userType) VALUES ('$ID','$firstName','$lastName','$password','$email','$mobile','$userType')";
 
         //execute the insert query
         $rs=$this->db->query($sql); 

@@ -104,10 +104,14 @@ public static function form_register($pageID){
         $form.='<div class="form-group">';
         $form.='<label for="firstName">First Name</label><input required type="text" class="form-control" id="firstName" name="firstName" pattern="[a-zA-Z0-9óáéí\']{1,45}" title="First Name (up to 45 Characters)">';
         $form.='<label for="lastName">Last Name</label><input required type="text" class="form-control" id="lastName" name="lastName" pattern="[a-zA-Z0-9óáéí\']{1,45}" title="Last Name (up to 45 Characters)" >';
+        $form.='<label for="ID">Username (max 9 characters)</label><input required type="text" class="form-control" id="ID" name="ID" pattern="[a-zA-Z0-9]{5,10}" title="ID (5 to 10 Characters) - Enter Characters A-Z,a-z and/or numbers 0-9">';
         
+        $form.='<label for="email">Email (this will be your user ID) </label><input type="text" class="form-control" id="email" name="email" pattern="[a-zA-Z0-9@.]{1,45}" title="enter a valid email" >';
+        $form.='<label for="mobile">Mobile</label><input type="text" class="form-control" id="mobile" name="mobile" pattern="[0-9()+-\']{7,20}" title="enter a valid phone number" >';
         
-        $form.='<label for="email">email (this will be your user ID) </label><input type="text" class="form-control" id="email" name="email" pattern="[a-zA-Z0-9@.]{1,45}" title="enter a valid email" >';
-        $form.='<label for="mobile">mobile</label><input type="text" class="form-control" id="mobile" name="mobile" pattern="[0-9()+-\']{7,20}" title="enter a valid phone number" >';
+        $form.= '<label for="userType">User Type</label><select class="form-control" id="userType" name="userType"><option value="CLIENT">Client</option><option value="ADMIN">Administrator</option></select>';
+
+        
         $form.='<label for="pass1">Password</label><input required type="password" class="form-control" id="pass1" name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">';
         $form.='<label for="pass2">Re-enterPassword</label><input required type="password" class="form-control" id="pass2" name="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must match the above password exactly">';
         $form.='</div> ';

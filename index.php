@@ -202,9 +202,9 @@ if ($user->getLoggedInState()) {
         case "ADMIN":  //create new ADMIN controller
             $controller = new AdminController($user, $db,PAGE_TITLE);
             break;  
-        case "GENERAL":  //create new general controller
-            $controller = new GeneralController($user, $db,PAGE_TITLE);
-            break;  
+    //    case "GENERAL":  //create new general controller
+     //       $controller = new GeneralController($user, $db,PAGE_TITLE);
+     //       break;  
                
         default :  //create new general/not logged in controller
             //unidentified user type  - force logout to reset system state
