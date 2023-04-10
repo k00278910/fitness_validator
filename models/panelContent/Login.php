@@ -11,7 +11,7 @@
  * The purpose of this class is to generate HTML view panel headings and content
  * for not logged in  user login page.  
  *
- * @author gerry.guinane
+ * @author Anthony Boyle (k00278910)
  * 
  */
 
