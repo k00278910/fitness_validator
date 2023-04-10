@@ -1,11 +1,6 @@
 <?php
 /**
 * This file contains the Login Class
-* 
-*/
-
-
-/**
  * Login is an extended PanelModel Class
  * 
  * The purpose of this class is to generate HTML view panel headings and content
