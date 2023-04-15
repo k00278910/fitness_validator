@@ -18,7 +18,7 @@ define ('PAGE_TITLE','DDA Framework'); //site wide page title (tab label at top 
 //AJAX Configuration - read the SETUP INSTRUCTIONS
 define ('CHAT_ENABLED',false);  //True if AJAX Chat  is enabled
 $serverIP_address='127.0.0.1';  //network IP address of the Apache Server
-$root_path='hr_training_validator_1.4/'; //path from htdocs folder to the default page (usually index.php) of this web application
+$root_path='hr_training_validator_1.6/'; //path from htdocs folder to the default page (usually index.php) of this web application
 define ('__THIS_URI_ROOT','http://'.$serverIP_address.'/'.$root_path);  //Define root URL folder for this website
 
 

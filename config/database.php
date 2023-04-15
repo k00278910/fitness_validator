@@ -15,5 +15,5 @@ $DBportNr = '3307'; //MySQL Server port nr.
 $DBUser   = 'root';  //the MySQL user name
 $DBPass   = '';  //the MySQL user password
 //$DBName   = 'k00999999_framework_college'; //the MySQL database name
-$DBName   = 'hr_training_validator_1.4'; //the MySQL database name
-$DB_backup_file   = 'database/hr_training_validator_1.4.sql'; //the MySQL database SQL File location
+$DBName   = 'hr_validator_project'; //the MySQL database name
+$DB_backup_file   = 'database/hr_validator_project.sql'; //the MySQL database SQL File location
