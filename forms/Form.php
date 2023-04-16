@@ -306,6 +306,41 @@ class Form
                 $form .= '</div>';
                 return $form;
         }
+        public static function form_update_runplan_client($pageID, $user)
+        {
+                $user = strtoupper(addslashes($user));
+                $form = '<div class="container-fluid">';
+                $form .= '<form method="post" action="index.php?pageID=' . $pageID . '">';
+
+                $form .= '<div class="form-group">';
+
+                $form .= '<label for="ID">Client Username</label><input required readonly type="text" class="form-control" id="ID" value="' . $user . '" name="ID" pattern="[a-zA-Z0-9]{5,10}" title="ID (5 to 10 Characters) - Enter Characters A-Z,a-z and/or numbers 0-9">';
+                $form .= '<label for="typeRun">Week-Day (eg Week1Day1)</label><input required type="text" class="form-control" id="typeRun" name="typeRun" pattern="[a-zA-Z0-9óáéí\' ]{1,45}" title="typeRun (up to 45 Characters)">';
+                $form .= '</div>';
+
+                //$form .= '<div class="form-group">';
+                //$form .= '<label for="sessionComplete"> <input type="checkbox" name="sessionScore" value="5" id="sessionComplete" /> Session Completed </label><br>';
+                //$form .= '<label for="correctZone"> <input type="checkbox" name="sessionScore" value="10" id="correctZone" /> Correct Zone </label>';
+                //$form .= '</div>';
+
+                $form .= '<div class="form-group">';
+                $form .= '<input type="radio" id="correctZone" name="sessionScore" value="10">';
+                $form .= '<label for="correctZone">   Session Completed in Correct Zone</label><br>';
+                $form .= '<input type="radio" id="sessionCompleted" name="sessionScore" value="5">';
+                $form .= '<label for="sessionCompleted">   Session Completed Incorrect Zone</label><br>';
+                $form .= '<input type="radio" id="sessionIncomplete" name="sessionScore" value="0">';
+                $form .= '<label for="sessionIncomplete">   Session Incomplete</label>';
+
+                $form .= '</div>';
+
+
+
+
+                $form .= '<button type="submit" class="btn btn-default" name="btnUpdateRunPlan" value=\'sessionSelect\'>Update Run Plan</button>';
+                $form .= '</form>';
+                $form .= '</div>';
+                return $form;
+        }
 
         public static function form_edit_runplan($runPlanRecord, $pageID)
         {
@@ -333,10 +368,10 @@ class Form
 
         }
 
-        public static function form_edit_runplan_client($runPlanRecord, $pageID)
+        public static function form_edit_runplan_client($runPlanRecord, $pageID, $user)
         {
 
-
+                $user = strtoupper(addslashes($user));
                 $runPlanRecordArray = $runPlanRecord->fetch_assoc();
                 extract($runPlanRecordArray);
 
@@ -344,7 +379,7 @@ class Form
                 $form .= '<form method="post" action="index.php?pageID=' . $pageID . '">';
 
                 $form .= '<div class="form-group">';
-                //$form .= '<label for="ID">Client Username (max 10 characters)</label><input required type="text" class="form-control" id="ID" name="ID"   pattern="[a-zA-Z0-9]{5,10}" title="ID (5 to 10 Characters) - Enter Characters A-Z,a-z and/or numbers 0-9">';
+                $form .= '<label for="ID">Client Username (max 10 characters)</label><input required type="text" class="form-control" id="ID" value="' . $user . '" name="ID"   pattern="[a-zA-Z0-9]{5,10}" title="ID (5 to 10 Characters) - Enter Characters A-Z,a-z and/or numbers 0-9">';
                 //$form .= '<label for="ID">Client Username</label><input required type="text" class="form-control" id="ID" value="' . $ID . '" name="ID" pattern="[a-zA-Z0-9]{5,10}" title="ID (5 to 10 Characters) - Enter Characters A-Z,a-z and/or numbers 0-9">';
                 //$form .= '<label for="idRunPlan">Run Plan ID</label><input required type="text" class="form-control" id="idRunPlan" name="idRunPlan"  value="' . $idRunPlan . '" pattern="[0-9]{1,2}" title="idRunPlan (Integer Value)" >';
                 $form .= '<label for="typeRun">Week-Day</label><input required type="text" class="form-control" id="typeRun" value="' . $typeRun . '" name="typeRun" pattern="[a-zA-Z0-9óáéí\' ]{1,45}" title="typeRun (up to 45 Characters)">';

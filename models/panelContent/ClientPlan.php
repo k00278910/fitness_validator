@@ -49,10 +49,12 @@ class ClientPlan extends PanelModel
                 $selected_user = $this->user->getUserFirstName() . " " . $this->user->getUserlastName();
                 $selected_client = $this->user->getID();
                 $this->panelHead_1 = '<h3>Client Run Plan</h3>' . $selected_user . " (" . $selected_client . ")";
+                break;
             case "updateRunPlan":
                 $selected_user = $this->user->getUserFirstName() . " " . $this->user->getUserlastName();
                 $selected_client = $this->user->getID();
-                $this->panelHead_1 = '<h3>Client Run Plan</h3>' . $selected_user . " (" . $selected_client . ")";
+                $this->panelHead_1 = '<h3>Select Week-Day for verification</h3>' . $selected_user . " (" . $selected_client . ")";
+                break;
             default:
                 $this->panelContent_1 = "Panel 1 content for <b>$this->pageHeading</b> menu item is under construction.";
                 break;
@@ -80,12 +82,14 @@ class ClientPlan extends PanelModel
                 }
                 break;
             case "updateRunPlan":
+                //$this->panelContent_1 = "Panel 1 content for <b>$this->pageHeading</b> menu item is under construction.";
+                $selected_user = $this->user->getUserFirstName() . " " . $this->user->getUserlastName();
+                $selected_client = $this->user->getID();
+                $this->panelContent_1 = Form::form_update_runplan_client($this->pageID, $selected_client);
 
-
-
-
+                break;
             default:
-                $this->panelContent_1 = "Panel 1 content for <b>$this->pageHeading</b> menu item is under construction.";
+
                 break;
         } //end switch 
     }
@@ -95,7 +99,21 @@ class ClientPlan extends PanelModel
      */
     public function setPanelHead_2()
     {
-        $this->panelHead_2 = '<h3>Panel 2</h3>';
+        switch ($this->pageID) {
+
+            case "updateRunPlan":
+
+                $this->panelHead_2 = '<h3>Mark Session as Complete</h3>';
+
+                break;
+            default:
+                $this->panelContent_2 = "Panel 1 content for <b>$this->pageHeading</b> menu item is under construction.";
+                break;
+        } //end switch 
+
+
+
+
     }
 
     /**

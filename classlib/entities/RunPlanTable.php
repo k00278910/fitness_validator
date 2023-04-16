@@ -150,8 +150,8 @@ class RunPlanTable extends TableEntity
 
     public function viewPlanClient($user, $name)
     {
-        //$user = strtoupper(addslashes($user));
-        //$name = strtoupper(addslashes($name));
+        $user = strtoupper(addslashes($user));
+        $name = strtoupper(addslashes($name));
         //echo $name;
         //echo " (" . $user . ")";
         //$sessionName = strtoupper(addslashes($sessionName));
