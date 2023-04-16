@@ -8,7 +8,7 @@
  * 
  * Base class for Table Entities
  * 
- * @author Gerry Guinane
+ * 
  * 
  */
 

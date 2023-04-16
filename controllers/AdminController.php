@@ -11,7 +11,8 @@
  * @author gerry.guinane
  * 
  */
-class AdminController extends Controller {
+class AdminController extends Controller
+{
 
     /**
      * Constructor Method
@@ -22,7 +23,8 @@ class AdminController extends Controller {
      * @param MySQLi  $db The database connection object
      * @param String  $pageTitle The web page title 
      */
-    function __construct($user, $db, $pageTitle) {
+    function __construct($user, $db, $pageTitle)
+    {
         $this->controllerType = 'ADMIN';
         parent::__construct($user, $db, $pageTitle);
     }
@@ -35,7 +37,8 @@ class AdminController extends Controller {
      * It selects and loads the required view. 
      * 
      */
-    public function updateView() { //update the VIEW based on the users page selection
+    public function updateView()
+    { //update the VIEW based on the users page selection
         if (isset($this->getArray['pageID'])) { //check if a page id is contained in the URL
             switch ($this->getArray['pageID']) {
 
@@ -45,10 +48,10 @@ class AdminController extends Controller {
                     $contentModel = new AdminHome($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view                      
+                    include_once 'views/view_navbar_2_panel.php'; //load the view                      
                     break;
                 case "logout":
                     //Change the login state to false
@@ -59,8 +62,8 @@ class AdminController extends Controller {
                     $contentModel = new GeneralHome($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationGeneral($this->user, 'home');
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_2_panel.php'; //load the view                  
                     break;
@@ -71,18 +74,18 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageUsers($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_1_panel.php';  //load the view                      
+                    include_once 'views/view_navbar_1_panel.php'; //load the view                      
                     break;
                 case "registerManager":
                     //get the model
                     $contentModel = new AccountAdminManager($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
@@ -91,8 +94,8 @@ class AdminController extends Controller {
                     $contentModel = new AccountAdminCustomer($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
@@ -103,18 +106,18 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageSystem($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_1_panel.php';  //load the view                      
+                    include_once 'views/view_navbar_1_panel.php'; //load the view                      
                     break;
                 case "systemOffLine":
                     //create objects to generate view content
                     $contentModel = new UnderConstruction($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, 'systemOffLine');
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_1_panel.php'; //load the view        
                     break;
@@ -123,8 +126,8 @@ class AdminController extends Controller {
                     $contentModel = new UnderConstruction($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, 'systemOnLine');
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_1_panel.php'; //load the view        
                     break;
@@ -135,10 +138,10 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageClients($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 case "addClients":
@@ -146,40 +149,40 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageClients($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "viewClients":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageClients($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "editClients":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageClients($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "deleteClients":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageClients($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 //-----------------------------------------------------------------------
@@ -188,10 +191,10 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageRunPlans($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 case "addRunPlans":
@@ -199,40 +202,40 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageRunPlans($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "viewRunPlans":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunPlans($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel_3_9.php'; //load the view
                     break;
                 case "editRunPlans":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunPlans($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "deleteRunPlans":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunPlans($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 //-----------------------------------------------------------------------
@@ -241,10 +244,10 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageRunSessions($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 case "addRunSessions":
@@ -252,45 +255,45 @@ class AdminController extends Controller {
                     $contentModel = new AdminManageRunSessions($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "viewRunSessions":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunSessions($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_1_panel.php'; //load the view
                     break;
                 case "editRunSessions":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunSessions($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
                 case "deleteRunSessions":
                     //create objects to generate view content                        
                     $contentModel = new AdminManageRunSessions($this->user, $this->db, $this->postArray, $this->pageTitle, strtoupper($this->getArray['pageID']), $this->getArray['pageID']);
                     $navigationModel = new NavigationAdmin($this->user, $this->getArray['pageID']);
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
-                    include_once 'views/view_navbar_2_panel.php';  //load the view
+                    include_once 'views/view_navbar_2_panel.php'; //load the view
                     break;
 
                 //-----------------------------------------------------------------------
-                
-                
+
+
 
 
                 default:
@@ -299,22 +302,22 @@ class AdminController extends Controller {
                     $contentModel = new AdminHome($this->user, $this->db, $this->postArray, $this->pageTitle, 'HOME', 'home');
                     $navigationModel = new NavigationAdmin($this->user, 'home');
                     array_push($this->controllerObjects, $navigationModel, $contentModel);
-                    $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-                    $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+                    $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+                    $this->viewData = $data; //put the content array into a class property for diagnostic purpose
                     //update the view
                     include_once 'views/view_navbar_2_panel.php';
                     break;
             }
-        } else {//no page selected and NO page ID passed in the URL 
+        } else { //no page selected and NO page ID passed in the URL 
             //no page selected - default loads HOME page
             //create objects to generate view content
             $contentModel = new AdminHome($this->user, $this->db, $this->postArray, $this->pageTitle, 'HOME', 'home');
             $navigationModel = new NavigationAdmin($this->user, 'home');
             array_push($this->controllerObjects, $navigationModel, $contentModel);
-            $data = $this->getPageContent($contentModel, $navigationModel);  //get the page content from the models                 
-            $this->viewData = $data;  //put the content array into a class property for diagnostic purpose
+            $data = $this->getPageContent($contentModel, $navigationModel); //get the page content from the models                 
+            $this->viewData = $data; //put the content array into a class property for diagnostic purpose
             //update the view
-            include_once 'views/view_navbar_2_panel.php';  //load the view
+            include_once 'views/view_navbar_2_panel.php'; //load the view
         }
     }
 
