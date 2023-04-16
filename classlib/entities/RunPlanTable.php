@@ -148,6 +148,28 @@ class RunPlanTable extends TableEntity
         }
     }
 
+    public function viewPlanClient($user, $name)
+    {
+        //$user = strtoupper(addslashes($user));
+        //$name = strtoupper(addslashes($name));
+        //echo $name;
+        //echo " (" . $user . ")";
+        //$sessionName = strtoupper(addslashes($sessionName));
+        $sql = "SELECT * FROM runplan WHERE clientUserId='$user'";
+
+        try { //try to run the SQL query
+            $rs = $this->db->query($sql);
+            if ($rs->num_rows) { //check the resultset is not empty
+                return $rs;
+            } else {
+                return false;
+            }
+        } catch (Exception $ex) { //query has failed for some reason
+            return false;
+        }
+
+    }
+
     public function deleteRecordbyID($ID, $typeRun)
     {
         $ID = strtoupper(addslashes($ID));

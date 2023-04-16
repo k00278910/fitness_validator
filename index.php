@@ -88,7 +88,7 @@ include_once 'models/panelContent/ClientHome.php';
 include_once 'models/panelContent/ClientManageProfile.php';
 include_once 'models/panelContent/ZoneCalculator.php';
 include_once 'models/panelContent/ClientPlan.php';
-
+include_once 'models/panelContent/ClientZones.php';
 
 
 

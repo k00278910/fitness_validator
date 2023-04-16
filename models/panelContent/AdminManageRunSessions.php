@@ -122,7 +122,7 @@ class AdminManageRunSessions extends PanelModel
                 break;
             case "viewRunSessions":
                 //$this->panelContent_1=Form::form_select_runsession($this->pageID);
-                //$this->panelHead_2 = '<h3>View Run Sessions</h3>';
+                $this->panelHead_2 = '<h3>Run Sessions</h3>';
                 break;
             case "editRunSessions":
                 //$this->panelContent_1=Form::form_select_runsession($this->pageID);

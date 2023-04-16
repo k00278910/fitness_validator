@@ -43,9 +43,9 @@ class User
 
     /**
      *
-     * @var String $userAppID containing User's app ID (admin or client number)
+     * @var String $ID containing User's app ID (admin or client number)
      */
-    protected $userAppID;
+    protected $ID;
 
 
     /**
@@ -109,7 +109,7 @@ class User
 
         //get properties from the session object
         $this->userID = $session->getUserID();
-        $this->userAppID = $session->getUserAppID();
+        $this->ID = $session->getID();
         $this->userFirstName = $session->getUserFirstName();
         $this->userLastName = $session->getUserLastName();
         $this->userType = $session->getUserType();
@@ -147,7 +147,7 @@ class User
 
             //then set the session array property values
             $this->session->setUserID($row['email']);
-            //$this->session->setUserCollegeID($row['ID']);                
+            $this->session->setID($row['ID']);
             $this->session->setUserFirstName($row['FirstName']);
             $this->session->setUserLastName($row['LastName']);
             $this->session->setUserType($row['userType']);
@@ -155,7 +155,7 @@ class User
 
             //update the User class properties
             $this->userID = $row['email'];
-            $this->userAppID = $row['ID'];
+            $this->ID = $row['ID'];
             $this->userFirstName = $row['FirstName'];
             $this->userLastName = $row['LastName'];
             $this->userType = $row['userType'];
@@ -163,7 +163,7 @@ class User
         } else {
             $this->session->setLoggedinState(FALSE);
             $this->userID = NULL;
-            $this->userAppID = NULL;
+            $this->ID = NULL;
             $this->userFirstName = NULL;
             $this->userLastName = NULL;
             $this->userType = 'GUEST';
@@ -247,9 +247,9 @@ class User
      *  
      * @return string
      */
-    public function getUserAppID()
+    public function getID()
     {
-        return $this->userAppID;
+        return $this->ID;
     }
 
     /**
@@ -322,7 +322,7 @@ class User
         echo '<table border=1 border-style: dashed; style="background-color: #EEEEEE" >';
         echo '<tr><th>PROPERTY</th><th>VALUE</th></tr>';
         echo "<tr><td>userID </td><td>$this->userID       </td></tr>";
-        echo "<tr><td>userAppID  </td><td>$this->userAppID       </td></tr>";
+        echo "<tr><td>ID  </td><td>$this->ID       </td></tr>";
         echo "<tr><td>userFirstName  </td><td>$this->userFirstName     </td></tr>";
         echo "<tr><td>userLastName  </td><td>$this->userLastName         </td></tr>";
         echo "<tr><td>userType  </td><td>$this->userType         </td></tr>";

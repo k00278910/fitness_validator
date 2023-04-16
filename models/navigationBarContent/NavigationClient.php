@@ -13,7 +13,8 @@
  * @author Gerry Guinane
  * 
  */
-class NavigationClient implements NavigationInterface {
+class NavigationClient implements NavigationInterface
+{
 
     /**
      *
@@ -51,7 +52,8 @@ class NavigationClient implements NavigationInterface {
      * @param User $user The current user object.
      * @param string $pageID The currently selected page
      */
-    function __construct($user, $pageID) {
+    function __construct($user, $pageID)
+    {
         $this->loggedin = $user->getLoggedInState();
         $this->modelType = 'NavigationClient';
         $this->user = $user;
@@ -69,7 +71,8 @@ class NavigationClient implements NavigationInterface {
      * If a user is not properly logged in it force redirects to the website home page. 
      * 
      */
-    public function setmenuNav() {//set the menu items depending on the users selected page ID
+    public function setmenuNav()
+    { //set the menu items depending on the users selected page ID
         //empty string for menu items
         $this->menuNav = '';
 
@@ -94,7 +97,7 @@ class NavigationClient implements NavigationInterface {
                 case "viewClientProfile":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=manageClientProfile">Client Profile</a></li>';
-                    
+
                     //$this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=viewClientProfile">View Profile</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=editClientProfile">Edit Profile</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
@@ -103,87 +106,72 @@ class NavigationClient implements NavigationInterface {
                 case "editClientProfile":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=manageClientProfile">Client Profile</a></li>';
-                    
+
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewClientProfile">View Profile</a></li>';
                     // $this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=editClientProfile">Edit Profile</a></li>';                       
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-                
+
                 case "trainingZones":
                     //$this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=trainingZones">Training Zones</a></li>';
-                    //$this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=setTrainingZones">Set Training Zones</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
-                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewTrainingZones">View Training Zones</a></li>';
-
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
-                    break;
-                
-                case "setTrainingZones":
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
-                    $this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=trainingZones">Training Zones</a></li>';
-                    //$this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=setTrainingZones">Set Training Zones</a></li>';
-                    
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewTrainingZones">View Training Zones</a></li>';
-
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=setTrainingZones">Set Training Zones</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
 
                 case "viewTrainingZones":
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
-                    $this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=trainingZones">Training Zones</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingZones">Training Zones</a></li>';
+                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewTrainingZones">View Training Zones</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=setTrainingZones">Set Training Zones</a></li>';
-                    
-                    // $this->menuNav.='<li><a href="'.$_SERVER['PHP_SELF'].'?pageID=viewTrainingZones">View Training Zones</a></li>';
-
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-                
+
+                case "setTrainingZones":
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingZones">Training Zones</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewTrainingZones">View Training Zones</a></li>';
+                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=setTrainingZones">Set Training Zones</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
+                    break;
+
+
+
                 case "trainingPlan":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingPlan">Training Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=selectPlan">Select Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=cancelPlan">Cancel Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeksPlan">This Weeks Plan </a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewRunPlan">View Plan</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=updateRunPlan">Update Plan</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeklyTable">Weekly Table </a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-                
-                case "selectPlan":
+
+                case "viewRunPlan":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingPlan">Training Plan</a></li>';
-                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=selectPlan">Select Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=cancelPlan">Cancel Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeksPlan">This Weeks Plan </a></li>';
+                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewPlan">View Plan</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=updateRunPlan">Update Plan</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeklyTable">Weekly Table </a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-                
-                case "cancelPlan":
+
+                case "updateRunPlan":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingPlan">Training Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=selectPlan">Select Plan</a></li>';
-                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=cancelPlan">Cancel Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeksPlan">This Weeks Plan </a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewRunPlan">View Plan</a></li>';
+                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=updatePlan">Update Plan</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeklyTable">Weekly Table </a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-                
-                 case "weeksPlan":
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingPlan">Training Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=selectPlan">Select Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=cancelPlan">Cancel Plan</a></li>';
-                    //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeksPlan">This Weeks Plan </a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeklyTable">Weekly Table </a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
-                    break;
-                
+
+
+
                 case "weeklyTable":
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=home">Home</a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=trainingPlan">Training Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=selectPlan">Select Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=cancelPlan">Cancel Plan</a></li>';
-                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeksPlan">This Weeks Plan </a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=viewRunPlan">View Plan</a></li>';
+                    $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=updateRunPlan">Update Plan</a></li>';
                     //$this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=weeklyTable">Weekly Table </a></li>';
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
@@ -191,7 +179,7 @@ class NavigationClient implements NavigationInterface {
                 default:
                     $this->menuNav .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pageID=logout">Log Out</a></li>';
                     break;
-            }//end switch                
+            } //end switch                
         } else {
             //redirect to main index.php page
             header("Location:" . $_SERVER['PHP_SELF']);
@@ -203,14 +191,16 @@ class NavigationClient implements NavigationInterface {
      * 
      * @return string Containing  a HTML list item string containing the menu items that will appear in the view.
      */
-    public function getMenuNav() {
+    public function getMenuNav()
+    {
         return $this->menuNav;
     }
 
     /**
      * Dumps diagnostic information in HTML format relating to the class properties
      */
-    public function getDiagnosticInfo() {
+    public function getDiagnosticInfo()
+    {
 
         echo '<!-- NAVIGATION ' . $this->modelType . ' CLASS PROPERTY SECTION  -->';
         echo '<div class="container-fluid"   style="background-color: #AAAAAA">'; //outer DIV

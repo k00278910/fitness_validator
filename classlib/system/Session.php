@@ -41,7 +41,7 @@ class Session
    *
    * @var String $ID containing User's app ID (employee or student number)
    */
-  protected $userAppID;
+  protected $ID;
 
   /**
    *
@@ -189,7 +189,7 @@ class Session
     }
 
     if (isset($_SESSION['ID'])) {
-      $this->userAppID = $_SESSION['userType'];
+      $this->ID = $_SESSION['ID'];
     } else {
       $_SESSION['ID'] = NULL;
       $this->userAppID = NULL;
@@ -225,6 +225,7 @@ class Session
       $this->setUserLastName(NULL);
       $this->setUserID(NULL);
       $this->setUserType(NULL);
+      $this->setID(NULL);
     }
   }
   //END METHOD: setLoggedinState($loggedin)
@@ -246,6 +247,7 @@ class Session
     $this->setUserLastName(NULL);
     $this->setUserID(NULL);
     $this->setUserType(NULL);
+    $this->setID(NULL);
     $_SESSION = array(); //destroy all of the session variables
     if (ini_get("session.use_cookies")) { //kill the cookie containing the session ID on the client machine
       $params = session_get_cookie_params();
@@ -315,6 +317,18 @@ class Session
   {
     $this->userType = $userType;
     $_SESSION['userType'] = $userType;
+  }
+
+  /**
+   * 
+   * Sets the user type property and saves in the $_SESSION superglobal array
+   * 
+   * @param string $ID The current userID
+   */
+  public function setID($ID)
+  {
+    $this->ID = $ID;
+    $_SESSION['ID'] = $ID;
   }
 
 
@@ -390,9 +404,9 @@ class Session
    *  
    * @return string
    */
-  public function getUserAppID()
+  public function getID()
   {
-    return $this->userAppID;
+    return $this->ID;
   }
 
   /**
@@ -469,7 +483,7 @@ class Session
     echo "<tr><td>loggedin  </td>   <td>$this->loggedin    </td></tr>";
     echo "<tr><td>chatEnabled  </td>   <td>$this->chatEnabled    </td></tr>";
     echo "<tr><td>userID  </td>   <td>$this->userID    </td></tr>";
-    echo "<tr><td>userAppID  </td>   <td>$this->userAppID</td></tr>";
+    echo "<tr><td>userAppID  </td>   <td>$this->ID</td></tr>";
     echo "<tr><td>userFirstName  </td>   <td>$this->userFirstName    </td></tr>";
     echo "<tr><td>userType  </td>   <td>$this->userType    </td></tr>";
     echo "<tr><td>loginAttempts  </td>   <td>$this->loginAttempts    </td></tr>";
